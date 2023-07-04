@@ -1,11 +1,11 @@
 import streamlit as st
 import csv
 from collections import defaultdict
-import subprocess
 import sys
+import pip
 
 def install(package):
-    subprocess.check_call([sys.executable, "-m", "pip", "--user","install", package])
+    pip.main(['install', '--user', package])
 
 # Install openpyxl
 install("git+https://github.com/openpyxl/openpyxl.git")
