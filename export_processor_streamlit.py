@@ -5,7 +5,7 @@ import subprocess
 import sys
 
 def install(package):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+    subprocess.check_call([sys.executable, "-m", "pip", "--user","install", package])
 
 # Install openpyxl
 install("git+https://github.com/openpyxl/openpyxl.git")
