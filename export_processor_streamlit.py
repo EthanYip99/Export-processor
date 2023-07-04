@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import csv
-import xlsxwriter
 from collections import defaultdict
 
 def convert_region_value(value):
@@ -168,7 +167,7 @@ def process_company_export(df):
     nationality_counts_df = count_director_nationalities(df, country_list)
 
     # Create a Pandas Excel writer
-    writer = pd.ExcelWriter('processed_company_export.xlsx', engine='xlsxwriter')
+    writer = pd.ExcelWriter('processed_company_export.xlsx')
    
     # Write the original DataFrame to the first sheet
     df.to_excel(writer, sheet_name='Raw data', index=False)
@@ -194,7 +193,7 @@ def process_fundraising_export(df):
     fund_type_counts_df = count_fund_type(df)
 
     # Create a Pandas Excel writer
-    writer = pd.ExcelWriter('processed_fundraising_export.xlsx', engine='xlsxwriter')
+    writer = pd.ExcelWriter('processed_fundraising_export.xlsx')
 
     # Write the original DataFrame to the first sheet
     df.to_excel(writer, sheet_name='Raw data', index=False)
