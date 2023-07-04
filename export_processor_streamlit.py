@@ -2,7 +2,8 @@ import streamlit as st
 import csv
 from collections import defaultdict
 import pandas as pd
-import openpyxl
+from openpyxl import Workbook
+from openpyxl.utils.dataframe import dataframe_to_rows
 
 def convert_region_value(value):
     scotland_regions = ['East of Scotland', 'West of Scotland', 'Tayside', 'Aberdeen', 'Highlands and Islands', 'South of Scotland']
