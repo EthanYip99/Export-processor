@@ -167,9 +167,10 @@ def process_company_export(df):
     age_brackets_df = count_age_brackets(df)
     nationality_counts_df = count_director_nationalities(df, country_list)
 
-    # Create a Pandas Excel writer
-    writer = pd.ExcelWriter('processed_company_export.xlsx')
-   
+    # Create a new workbook
+    workbook = openpyxl.Workbook()
+    writer = pd.ExcelWriter(workbook)
+
     # Write the original DataFrame to the first sheet
     df.to_excel(writer, sheet_name='Raw data', index=False)
 
@@ -184,17 +185,18 @@ def process_company_export(df):
 
     # Write the director nationality counts DataFrame to a separate sheet
     nationality_counts_df.to_excel(writer, sheet_name='Director nationalities', index=False)
-    
-    writer.save('processed_company_export.xlsx')
-    writer.close('processed_company_export.xlsx')
+
+    # Save the workbook to a file
+    workbook.save('processed_company_export.xlsx')
 
 def process_fundraising_export(df):
     fund_manager_counts_df = count_fund_managers(df)
     fund_country_counts_df = count_fund_country(df)
     fund_type_counts_df = count_fund_type(df)
 
-    # Create a Pandas Excel writer
-    writer = pd.ExcelWriter('processed_fundraising_export.xlsx')
+    # Create a new workbook
+    workbook = openpyxl.Workbook()
+    writer = pd.ExcelWriter(workbook)
 
     # Write the original DataFrame to the first sheet
     df.to_excel(writer, sheet_name='Raw data', index=False)
@@ -207,8 +209,9 @@ def process_fundraising_export(df):
 
     # Write the fund type counts DataFrame to a separate sheet
     fund_type_counts_df.to_excel(writer, sheet_name='Deal counts by fund type', index=False)
-    writer.save('processed_fundraising_export.xlsx')
-    writer.close('processed_fundraising_export.xlsx')
+
+    # Save the workbook to a file
+    workbook.save('processed_fundraising_export.xlsx')
 
 
 def main():
