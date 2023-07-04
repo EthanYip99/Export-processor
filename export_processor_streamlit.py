@@ -1,15 +1,6 @@
 import streamlit as st
 import csv
 from collections import defaultdict
-import sys
-import pip
-
-def install(package):
-    pip.main(['install', '--user', package])
-
-# Install openpyxl
-install("git+https://github.com/openpyxl/openpyxl.git")
-
 import pandas as pd
 
 def convert_region_value(value):
