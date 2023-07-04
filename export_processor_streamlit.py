@@ -197,7 +197,7 @@ def process_company_export(df):
         sheet_nationality_counts.append(row)
 
     # Save the workbook to a file
-    workbook.save(processed_company_export)
+    workbook.save('processed_company_export')
 
 
 def process_fundraising_export(df):
@@ -230,7 +230,7 @@ def process_fundraising_export(df):
         sheet_fund_type_counts.append(row)
 
     # Save the workbook to a file
-    workbook.save(processed_fundraising_export)
+    workbook.save('processed_fundraising_export')
 
 
 def main():
