@@ -185,8 +185,8 @@ def process_company_export(df):
     # Write the director nationality counts DataFrame to a separate sheet
     nationality_counts_df.to_excel(writer, sheet_name='Director nationalities', index=False)
     
-    writer.save()
-    writer.close()
+    save()
+    close()
 
 def process_fundraising_export(df):
     fund_manager_counts_df = count_fund_managers(df)
@@ -207,8 +207,8 @@ def process_fundraising_export(df):
 
     # Write the fund type counts DataFrame to a separate sheet
     fund_type_counts_df.to_excel(writer, sheet_name='Deal counts by fund type', index=False)
-    writer.save()
-    writer.close()
+    save()
+    close()
 
 
 def main():
