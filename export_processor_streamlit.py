@@ -2,6 +2,14 @@ import streamlit as st
 import pandas as pd
 import csv
 from collections import defaultdict
+import subprocess
+import sys
+
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+# Install openpyxl
+install("git+https://github.com/openpyxl/openpyxl.git")
 
 def convert_region_value(value):
     scotland_regions = ['East of Scotland', 'West of Scotland', 'Tayside', 'Aberdeen', 'Highlands and Islands', 'South of Scotland']
