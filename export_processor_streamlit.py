@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import csv
 from collections import defaultdict
-import xlsxwriter
 
 def convert_region_value(value):
     scotland_regions = ['East of Scotland', 'West of Scotland', 'Tayside', 'Aberdeen', 'Highlands and Islands', 'South of Scotland']
