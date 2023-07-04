@@ -161,7 +161,6 @@ def count_fund_type(df):
     return fund_type_counts_df
     pass
 
-
 def process_company_export(df):
     university_counts_df = count_universities(df)
     accelerator_counts_df = count_accelerators(df)
@@ -169,26 +168,37 @@ def process_company_export(df):
     nationality_counts_df = count_director_nationalities(df, country_list)
 
     # Create a new workbook
-    workbook = openpyxl.Workbook()
-    writer = pd.ExcelWriter(workbook)
+    workbook = Workbook()
 
     # Write the original DataFrame to the first sheet
-    df.to_excel(writer, sheet_name='Raw data', index=False)
+    sheet_raw_data = workbook.active
+    sheet_raw_data.title = 'Raw data'
+    for row in dataframe_to_rows(df, index=False, header=True):
+        sheet_raw_data.append(row)
 
     # Write the institution counts DataFrame to a separate sheet
-    university_counts_df.to_excel(writer, sheet_name='Institution Counts', index=False)
+    sheet_university_counts = workbook.create_sheet(title='Institution Counts')
+    for row in dataframe_to_rows(university_counts_df, index=False, header=True):
+        sheet_university_counts.append(row)
 
     # Write the accelerator counts DataFrame to a separate sheet
-    accelerator_counts_df.to_excel(writer, sheet_name='Accelerator Counts', index=False)
+    sheet_accelerator_counts = workbook.create_sheet(title='Accelerator Counts')
+    for row in dataframe_to_rows(accelerator_counts_df, index=False, header=True):
+        sheet_accelerator_counts.append(row)
 
     # Write the director age bracket counts DataFrame to a separate sheet
-    age_brackets_df.to_excel(writer, sheet_name='Director ages', index=False)
+    sheet_age_brackets = workbook.create_sheet(title='Director ages')
+    for row in dataframe_to_rows(age_brackets_df, index=False, header=True):
+        sheet_age_brackets.append(row)
 
     # Write the director nationality counts DataFrame to a separate sheet
-    nationality_counts_df.to_excel(writer, sheet_name='Director nationalities', index=False)
+    sheet_nationality_counts = workbook.create_sheet(title='Director nationalities')
+    for row in dataframe_to_rows(nationality_counts_df, index=False, header=True):
+        sheet_nationality_counts.append(row)
 
     # Save the workbook to a file
     workbook.save('processed_company_export.xlsx')
+
 
 def process_fundraising_export(df):
     fund_manager_counts_df = count_fund_managers(df)
@@ -196,20 +206,28 @@ def process_fundraising_export(df):
     fund_type_counts_df = count_fund_type(df)
 
     # Create a new workbook
-    workbook = openpyxl.Workbook()
-    writer = pd.ExcelWriter(workbook)
+    workbook = Workbook()
 
     # Write the original DataFrame to the first sheet
-    df.to_excel(writer, sheet_name='Raw data', index=False)
+    sheet_raw_data = workbook.active
+    sheet_raw_data.title = 'Raw data'
+    for row in dataframe_to_rows(df, index=False, header=True):
+        sheet_raw_data.append(row)
 
     # Write the fund manager counts DataFrame to a separate sheet
-    fund_manager_counts_df.to_excel(writer, sheet_name='Fund manager counts', index=False)
+    sheet_fund_manager_counts = workbook.create_sheet(title='Fund manager counts')
+    for row in dataframe_to_rows(fund_manager_counts_df, index=False, header=True):
+        sheet_fund_manager_counts.append(row)
 
     # Write the fund head office country counts DataFrame to a separate sheet
-    fund_country_counts_df.to_excel(writer, sheet_name='Deal counts by country', index=False)
+    sheet_fund_country_counts = workbook.create_sheet(title='Deal counts by country')
+    for row in dataframe_to_rows(fund_country_counts_df, index=False, header=True):
+        sheet_fund_country_counts.append(row)
 
     # Write the fund type counts DataFrame to a separate sheet
-    fund_type_counts_df.to_excel(writer, sheet_name='Deal counts by fund type', index=False)
+    sheet_fund_type_counts = workbook.create_sheet(title='Deal counts by fund type')
+    for row in dataframe_to_rows(fund_type_counts_df, index=False, header=True):
+        sheet_fund_type_counts.append(row)
 
     # Save the workbook to a file
     workbook.save('processed_fundraising_export.xlsx')
