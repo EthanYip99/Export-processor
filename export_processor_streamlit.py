@@ -15,7 +15,7 @@ def convert_region_value(value):
         return value + ' (England)'
     else:
         return value
-    pass
+
 
 
 def count_universities(df):
@@ -35,7 +35,7 @@ def count_universities(df):
     institution_counts_df = institution_counts.reset_index()
     institution_counts_df.columns = ['University', 'Count']
     return institution_counts_df
-    pass
+
 
 def count_accelerators(df):
     # Get list of columns that contain "Accelerator Name"
@@ -54,7 +54,7 @@ def count_accelerators(df):
     accelerator_counts_df = accelerator_counts.reset_index()
     accelerator_counts_df.columns = ['Accelerator', 'Count']
     return  accelerator_counts_df
-    pass
+
 
 def count_age_brackets(df):
     age_columns = [col for col in df.columns if "Age (if known)" in col]
@@ -80,7 +80,7 @@ def count_age_brackets(df):
 
     age_brackets_df = pd.DataFrame(list(age_counts_dict.items()), columns=['Age Bracket', 'Count'])
     return age_brackets_df
-    pass
+
 
 def count_director_nationalities(df, country_list):
     director_cols = [col for col in df.columns if "Current Directors" in col and "Nationalities" in col]
@@ -97,7 +97,7 @@ def count_director_nationalities(df, country_list):
 
     nationality_counts_df = pd.DataFrame({"Nationality": list(nationality_counts.keys()), "Count": list(nationality_counts.values())})
     return nationality_counts_df
-    pass
+
 
 country_list = ['Åland Islands', 'Albania', 'Afghanistan', 'Algeria', 'Azerbaijan', 'American Samoa', 'Andorra', 'Angola', 'Anguilla', 'Antarctica', 'Antigua and Barbuda', 'Argentina', 'Armenia', 'Aruba', 'Australia', 'Austria', 'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados', 'Belarus', 'Belgium', 'Belize', 'Benin', 'Bermuda', 'Bhutan', 'Bolivia, Plurinational State Of', 'Bosnia and Herzegovina', 'Botswana', 'Bouvet Island', 'Brazil', 'British Indian Ocean Territory', 'Brunei Darussalam', 'Bulgaria', 'Burkina Faso', 'Burundi', 'Cambodia', 'Cameroon', 'Canada', 'Cape Verde', 'Cayman Islands', 'Central African Republic', 'Chad', 'Chile', 'China', 'Christmas Island', 'Cocos (Keeling) Islands', 'Colombia', 'Comoros', 'Congo', 'Congo, The Democratic Republic Of The', 'Cook Islands', 'Costa Rica', "Côte D'Ivoire", 'Croatia', 'Cuba', 'Curaçao', 'Cyprus', 'Czech Republic', 'Denmark', 'Djibouti', 'Dominica', 'Dominican Republic', 'Ecuador', 'Egypt', 'El Salvador', 'Equatorial Guinea', 'Eritrea', 'Estonia', 'Ethiopia', 'Falkland Islands (Malvinas)', 'Faroe Islands', 'Fiji', 'Finland', 'French Guiana', 'French Polynesia', 'French Southern Territories', 'Gabon', 'Gambia', 'Georgia', 'Ghana', 'Gibraltar', 'Greenland', 'Grenada', 'Guadeloupe', 'Guam', 'Guatemala', 'Guinea', 'Guinea-Bissau', 'Guyana', 'Haiti', 'Heard Island and Mcdonald Islands', 'Holy See (Vatican City State)', 'Honduras', 'Hong Kong', 'Hungary', 'Iceland', 'India', 'Indonesia', 'Iran, Islamic Republic Of', 'Iraq', 'Ireland', 'Isle Of Man', 'Jamaica', 'Japan', 'Jersey', 'Bonaire, Saint Eustatius and Saba', 'Jordan', 'Kazakhstan', 'Kenya', 'Kiribati', "Korea, Democratic People's Republic Of (North Korea)", 'Korea, Republic Of (South Korea)', 'Kuwait', 'Kyrgyzstan', 'Lao People\'S Democratic Republic', 'Latvia', 'Lebanon', 'Lesotho', 'Liberia', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Macao', 'Madagascar', 'Malawi', 'Malaysia', 'Maldives', 'Mali', 'Malta', 'Marshall Islands', 'Martinique', 'Mauritania', 'Mauritius', 'Mayotte', 'Mexico', 'Micronesia, Federated States Of', 'Moldova, Republic Of', 'Monaco', 'Mongolia', 'Montenegro', 'Montserrat', 'Morocco', 'Mozambique', 'Myanmar', 'Namibia', 'Nauru', 'Nepal', 'New Caledonia', 'New Zealand', 'Nicaragua', 'Niger', 'Nigeria', 'Niue', 'Norfolk Island', 'Northern Mariana Islands', 'Norway', 'Oman', 'Pakistan', 'Palau', 'Palestinian Territory, Occupied', 'Panama', 'Papua New Guinea', 'Paraguay', 'Peru', 'Philippines', 'Pitcairn', 'Poland', 'Portugal', 'Puerto Rico', 'Qatar', 'Réunion', 'Romania', 'Rwanda', 'Saint Barthélemy', 'Saint Helena, Ascension and Tristan Da Cunha', 'Saint Kitts and Nevis', 'Saint Lucia', 'Saint Martin (French Part)', 'Saint Pierre and Miquelon', 'Saint Vincent and The Grenadines', 'Samoa', 'San Marino', 'Sao Tome and Principe', 'Saudi Arabia', 'Senegal', 'Serbia', 'Seychelles', 'Sierra Leone', 'Singapore', 'Sint Maarten (Dutch Part)', 'Slovakia', 'Slovenia', 'Solomon Islands', 'Somalia', 'South Georgia and The South Sandwich Islands', 'South Sudan', 'North Macedonia, Republic of', 'Libya, State of', 'Sri Lanka', 'Sudan', 'Suriname', 'Svalbard and Jan Mayen', 'Sweden', 'Switzerland', 'Syrian Arab Republic', 'Taiwan', 'Tajikistan', 'Tanzania, United Republic Of', 'Thailand', 'Timor-Leste', 'Togo', 'Tokelau', 'Tonga', 'Trinidad and Tobago', 'Tunisia', 'Turkey', 'Turkmenistan', 'Turks and Caicos Islands', 'Tuvalu', 'Uganda', 'Ukraine', 'United Arab Emirates', 'United Kingdom', 'United States Minor Outlying Islands', 'Uruguay', 'Uzbekistan', 'Vanuatu', 'Viet Nam', 'Virgin Islands, British', 'Virgin Islands, U.S.', 'Wallis and Futuna', 'Western Sahara', 'Yemen', 'Zambia', 'Zimbabwe', 'Eswatini', 'Venezuela, Bolivarian Republic Of', 'France', 'Germany', 'Greece', 'Guernsey', 'Israel', 'Italy', 'Netherlands', 'Russian Federation', 'South Africa', 'Spain', 'United States']
 
@@ -119,7 +119,7 @@ def count_fund_managers(df):
     fund_manager_counts_df = fund_manager_counts.reset_index()
     fund_manager_counts_df.columns = ['Fund manager', 'Count of deal participations']
     return fund_manager_counts_df
-    pass
+
 
 
 def count_fund_country(df):
@@ -139,7 +139,7 @@ def count_fund_country(df):
     fund_country_counts_df = fund_country_counts.reset_index()
     fund_country_counts_df.columns = ['Fund - Head office country', 'Count of deal participations']
     return fund_country_counts_df
-    pass
+
 
 
 def count_fund_type(df):
@@ -159,7 +159,7 @@ def count_fund_type(df):
     fund_type_counts_df = fund_type_counts.reset_index()
     fund_type_counts_df.columns = ['Fund type', 'Count of deal participations']
     return fund_type_counts_df
-    pass
+
 
 def process_company_export(df):
     university_counts_df = count_universities(df)
