@@ -1,6 +1,5 @@
 streamlit
 pandas
 openpyxl
-defaultdict
-Workbook
-dataframe_to_rows
+collections
+openpyxl.utils.dataframe
