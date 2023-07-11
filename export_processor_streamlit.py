@@ -4,7 +4,7 @@ from collections import defaultdict
 import pandas as pd
 from openpyxl import Workbook
 from openpyxl.utils.dataframe import dataframe_to_rows
-import BytesIO
+from IO import BytesIO
 
 def convert_region_value(value):
     scotland_regions = ['East of Scotland', 'West of Scotland', 'Tayside', 'Aberdeen', 'Highlands and Islands', 'South of Scotland']
