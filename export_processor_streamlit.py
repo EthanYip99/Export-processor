@@ -4,6 +4,7 @@ from collections import defaultdict
 import pandas as pd
 from openpyxl import Workbook
 from openpyxl.utils.dataframe import dataframe_to_rows
+from IO import BytesIO
 
 def convert_region_value(value):
     scotland_regions = ['East of Scotland', 'West of Scotland', 'Tayside', 'Aberdeen', 'Highlands and Islands', 'South of Scotland']
@@ -197,7 +198,8 @@ def process_company_export(df):
         sheet_nationality_counts.append(row)
 
     # Save the workbook to a file
-    workbook.save('processed_company_export.xlsx')
+    process_company_export(df) = BytesIO()
+    workbook.save(process_company_export(df))
 
 
 def process_fundraising_export(df):
@@ -230,7 +232,8 @@ def process_fundraising_export(df):
         sheet_fund_type_counts.append(row)
 
     # Save the workbook to a file
-    workbook.save('processed_fundraising_export.xlsx')
+    process_fundraising_export(df) = BytesIO()
+    workbook.save(process_fundraising_export(df))
 
 
 def main():
@@ -245,11 +248,11 @@ def main():
             if export_type == "Company Data":
                 process_company_export(df)
                 st.success("Company export processed successfully. Click below to download the Excel file.")
-                st.download_button("Download Processed File", "processed_company_export.xlsx")
+                st.download_button("Download Processed File",  process_company_export(df))
             elif export_type == "Fundraising Data":
                 process_fundraising_export(df)
                 st.success("Fundraising export processed successfully. Click below to download the Excel file.")
-                st.download_button("Download Processed File", "processed_fundraising_export.xlsx")
+                st.download_button("Download Processed File", process_fundraising_export(df))
         except Exception as e:
             st.error(f"Error occurred during processing: {str(e)}")
 
