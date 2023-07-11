@@ -198,8 +198,8 @@ def process_company_export(df):
         sheet_nationality_counts.append(row)
 
     # Save the workbook to a file
-    process_company_export(df) = BytesIO()
-    workbook.save(process_company_export(df))
+    process_company_export = BytesIO()
+    workbook.save(process_company_export)
 
 
 def process_fundraising_export(df):
@@ -232,8 +232,8 @@ def process_fundraising_export(df):
         sheet_fund_type_counts.append(row)
 
     # Save the workbook to a file
-    process_fundraising_export(df) = BytesIO()
-    workbook.save(process_fundraising_export(df))
+    process_fundraising_export = BytesIO()
+    workbook.save(process_fundraising_export)
 
 
 def main():
@@ -248,11 +248,11 @@ def main():
             if export_type == "Company Data":
                 process_company_export(df)
                 st.success("Company export processed successfully. Click below to download the Excel file.")
-                st.download_button("Download Processed File",  process_company_export(df))
+                st.download_button("Download Processed File",  process_company_export)
             elif export_type == "Fundraising Data":
                 process_fundraising_export(df)
                 st.success("Fundraising export processed successfully. Click below to download the Excel file.")
-                st.download_button("Download Processed File", process_fundraising_export(df))
+                st.download_button("Download Processed File", process_fundraising_export)
         except Exception as e:
             st.error(f"Error occurred during processing: {str(e)}")
 
